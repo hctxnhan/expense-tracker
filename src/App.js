@@ -16,9 +16,7 @@ export default function App() {
           <FilterProvider>
             <div className='bg-violet-50 min-h-screen'>
               <Portal wrapperId='notification'>
-                <div className='fixed top-3 right-3'>
-                  <Notification />
-                </div>
+                <Notification />
               </Portal>
 
               <Header />

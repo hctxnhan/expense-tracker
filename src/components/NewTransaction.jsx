@@ -6,6 +6,7 @@ import Input from './Input';
 import RadioButton from './RadioButton';
 import RadioGroup from './RadioGroup';
 import { convertStringToMiliseconds } from '../utils/TimePicker';
+import { useNotificationContext } from '../contexts/NotificationContext';
 function convertDateToTimePickerValue(date) {
   console.log('RERUN');
   if (!date) return '';
@@ -26,6 +27,8 @@ export default function NewTransaction() {
   const [type, setType] = useState('expense');
   const [user] = useAuthContext();
 
+  const { setNotification } = useNotificationContext();
+
   async function handleNewTransactionClick(e) {
     e.preventDefault();
     if (!validateForm()) {
@@ -40,8 +43,13 @@ export default function NewTransaction() {
       amount,
       transactionType: type,
     };
-    await addTransaction(transaction);
-    resetForm();
+    try {
+      await addTransaction(transaction);
+      setNotification('Transaction added successfully!');
+      resetForm();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function resetForm() {
@@ -72,6 +80,7 @@ export default function NewTransaction() {
             : 'Where is that money come from?'
         }
       />
+
       <Input type={'date'} label={'Date'} value={date} setValue={setDate} />
       <Input label={'Amount'} value={amount} setValue={setAmount} />
 

@@ -32,9 +32,13 @@ export default function TransactionList() {
   return (
     <div className='flex flex-col gap-3'>
       {loading ? (
-        <Loading />
+        <div className='text-center'>
+          <Loading />
+        </div>
       ) : transactions.length === 0 ? (
-        <p>You don't have any transaction yet!</p>
+        <p className='text-2xl text-center'>
+          You don't have any transaction yet!
+        </p>
       ) : (
         transactions.map((item) => <Transaction data={item} key={item.docId} />)
       )}
