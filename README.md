@@ -1,8 +1,7 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Simple Expense Tracker
 
-## Available Scripts
+![image](https://user-images.githubusercontent.com/95177300/198862616-6df3412e-04d7-4490-afd8-b264dc9d5a44.png)
 
 In the project directory, you can run:
 
