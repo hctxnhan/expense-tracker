@@ -36,27 +36,16 @@ export async function removeTransaction(docId) {
   }
 }
 
-export async function getTransactions(
-  uid,
-  setTransactions,
-  setIsLoading,
-  { type = 'all', from = 0, to = Infinity }
-) {
+export async function getTransactions(uid, setTransactions, setIsLoading) {
   const transactionsRef = await collection(db, 'transactions');
-  function getType() {
-    if (type === 'all') {
-      return ['income', 'expense'];
-    } else return [type];
-  }
 
-  console.log('from: ', from, 'to: ', to);
+  if (!uid) {
+    return;
+  }
 
   const q = query(
     transactionsRef,
     where('uid', '==', uid),
-    where('transactionType', 'in', getType()),
-    where('date', '<=', to),
-    where('date', '>=', from),
     orderBy('date', 'desc')
   );
 
