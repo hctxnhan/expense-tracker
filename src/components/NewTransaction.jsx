@@ -69,7 +69,7 @@ export default function NewTransaction() {
   }
 
   return (
-    <form className='flex flex-col gap-4 p-6 shadow-lg rounded-md bg-white'>
+    <form className='flex flex-col gap-4 p-6 shadow-lg rounded-md bg-white h-full'>
       <Input
         label={'Items'}
         value={items}
@@ -104,6 +104,7 @@ export default function NewTransaction() {
           Income
         </RadioButton>
       </RadioGroup>
+      <div className='flex-grow'></div>
       <Button
         buttonType='primary'
         type='submit'

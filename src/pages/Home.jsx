@@ -23,7 +23,7 @@ export default function Home() {
         <NewTransaction />
       </div>
       <Button
-        className='hidden xs:block col-span-full row-start-2'
+        className='hidden xs:block col-span-full row-start-2 text-gray-400 hover:text-gray-900'
         buttonType='primary'
         onClick={() => {
           setOpen(true);
@@ -33,7 +33,7 @@ export default function Home() {
       </Button>
       {isOpen && (
         <Portal>
-          <div className='fixed inset-0 hidden xs:block'>
+          <div className='fixed min-h-screen inset-0 hidden xs:block'>
             <button
               className='absolute right-2 top-2'
               onClick={() => setOpen(false)}

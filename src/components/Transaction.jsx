@@ -31,7 +31,7 @@ export default function Transaction({ data }) {
       </div>
       <div>
         <p className='font-semibold text-lg text-gray-800'>
-          {amount} <span className='text-gray-300'>VND</span>
+          {amount} <span className='text-gray-300 sm:text-xs'>VND</span>
         </p>
       </div>
       <button
