@@ -1,7 +1,7 @@
 
 # Simple Expense Tracker
 
-![image](https://user-images.githubusercontent.com/95177300/198862616-6df3412e-04d7-4490-afd8-b264dc9d5a44.png)
+![image](https://user-images.githubusercontent.com/95177300/199399717-216494db-d371-4065-9e86-cad4cb2070bd.png)
 
 In the project directory, you can run:
 
