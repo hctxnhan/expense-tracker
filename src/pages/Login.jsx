@@ -5,6 +5,7 @@ import Portal from '../components/Portal';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../firebase/auth';
 import Loading from '../components/Loading';
+import Notification from '../components/Notification';
 
 export default function Login() {
   const navigator = useNavigate();

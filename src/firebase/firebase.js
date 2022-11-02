@@ -28,27 +28,19 @@ const auth = getAuth();
 const db = getFirestore();
 
 export async function signInUserWithEmailAndPassword(email, password) {
-  try {
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-  } catch (error) {
-    console.log(error);
-  }
+  const userCredential = await signInWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
 }
 
 export async function signUpUserWithEmailAndPassword(email, password) {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-  } catch (error) {
-    console.log(error);
-  }
+  const userCredential = await createUserWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
 }
 
 export async function signOutUser() {

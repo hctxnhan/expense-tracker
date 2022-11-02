@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 function createWrapperAndAppendToBody(id) {
   const wrapper = document.createElement('div');
   wrapper.id = id;
+  wrapper.style.position = 'relative';
   document.body.appendChild(wrapper);
 
   return wrapper;

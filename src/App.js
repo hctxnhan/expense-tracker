@@ -1,6 +1,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
+import Notification from './components/Notification';
+import Portal from './components/Portal';
 import { FilterProvider } from './contexts/FilterContext';
+import { NotificationProvider } from './contexts/NotificationContext';
 import { FirebaseAuthProvider } from './firebase/auth';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -9,15 +12,23 @@ export default function App() {
   return (
     <BrowserRouter>
       <FirebaseAuthProvider>
-        <FilterProvider>
-          <div className='bg-violet-50 min-h-screen'>
-            <Header />
-            <Routes>
-              <Route path='/' element={<Home />} />
-              <Route path='/login' element={<Login />} />
-            </Routes>
-          </div>
-        </FilterProvider>
+        <NotificationProvider>
+          <FilterProvider>
+            <div className='bg-violet-50 min-h-screen'>
+              <Portal wrapperId='notification'>
+                <div className='fixed top-3 right-3'>
+                  <Notification />
+                </div>
+              </Portal>
+
+              <Header />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/login' element={<Login />} />
+              </Routes>
+            </div>
+          </FilterProvider>
+        </NotificationProvider>
       </FirebaseAuthProvider>
     </BrowserRouter>
   );

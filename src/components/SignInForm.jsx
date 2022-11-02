@@ -3,16 +3,33 @@ import Input from './Input';
 import { signInUserWithEmailAndPassword } from '../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 import { GrClose } from 'react-icons/gr';
+import { AuthErrorCodes } from 'firebase/auth';
 import Button from './Button';
+import { useNotificationContext } from '../contexts/NotificationContext';
 export default function SignInForm({ handleClose }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { setNotification } = useNotificationContext();
+
   const navigator = useNavigate();
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    signInUserWithEmailAndPassword(email, password).then(() => {
+    try {
+      await signInUserWithEmailAndPassword(email, password);
       navigator('/');
-    });
+      setNotification('Login successfully', 'success');
+    } catch (error) {
+      if (error.code === 'auth/invalid-email') {
+        console.log('Invalid email');
+        setNotification('Invalid email!', 'error');
+      }
+
+      if (error.code === 'auth/wrong-password') {
+        console.log('Wrong password');
+        setNotification('Wrong password!', 'error');
+      }
+    }
   };
   return (
     <div className='fixed top-1/2 left-1/2 rounded-md p-10 transform -translate-x-1/2 -translate-y-1/2 shadow-lg bg-white'>
