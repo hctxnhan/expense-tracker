@@ -27,7 +27,15 @@ export default function Filter() {
     setTo(calculatedTo);
   }
 
-  function clearFilter() {}
+  function clearFilter() {
+    setType('all');
+    setFrom(0);
+    setTo(Infinity);
+
+    setTypeFilter('all');
+    setDateFromFilter('');
+    setDateToFilter('');
+  }
 
   return (
     <div className='flex flex-col gap-3 p-6 shadow-lg rounded-md self-start bg-white'>
